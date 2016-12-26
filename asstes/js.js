@@ -1,6 +1,12 @@
 (function() {
+
+  var protocol = window.location.protocol
+
+  protocol = protocol=="https"?protocol:"http"
+
+
   var getList = function (callback) {
-    var url = "http://weex-market.taobao.net/json/weexExt/list.jsonp?callback=?"
+    var url = protocol+"://weex-market.taobao.net/json/weexExt/list.jsonp?callback=?"
     $.getJSON(url, function (result) {
       var data = result.data;
       var html = ""
@@ -25,7 +31,7 @@
   var isLoading = false
   var getDetail = function (id, callback) {
 
-    var url = "http://weex-market.taobao.net/json/weexExt/readme.jsonp?callback=?&id=" + id
+    var url = protocol+"://weex-market.taobao.net/json/weexExt/readme.jsonp?callback=?&id=" + id
     isLoading = true;
 
     showLoading();
