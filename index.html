@@ -5,132 +5,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="renderer" content="webkit" />
-  <title>Weex第三方组件市场</title>
-  <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    #header{
+  <title>Weex组件市场</title>
+  <link href="./asstes/bootstrap.min.css" rel="stylesheet"/>
+  <link href="./asstes/css.css" rel="stylesheet"/>
 
-    }
-
-    .site-header {
-      position: relative;
-      text-align: center;
-      background-color: #00b4ff;
-      border-radius: 0;
-      color: #fff;
-      margin-bottom: 0;
-    }
-    .site-nav {
-      position: absolute;
-      top: 15px;
-      right: 30px;
-      z-index: 1100;
-      display: none;
-    }
-
-    .logo{
-
-    }
-    .logo img{
-      width: 200px;
-    }
-
-    .site-header .title {
-      margin-top: 20px;
-    }
-    .site-header .search {
-      border: 2px solid #27AE60;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      font-size: 16px;
-      padding: 13px 30px;
-      border-radius: 0;
-      height: auto;
-      text-align: center;
-    }
-    .site-nav a:hover {
-      color: #fff;
-    }
-    .site-nav a {
-      color: #eee;
-    }
-    .package-info, .mostused-packages {
-      border-radius: 0;
-      border: none;
-    }
-
-
-    #header .mostused-packages{
-      height: 50px;
-    }
-
-
-    #mainbody{
-      display: flex;
-      flex-direction: row;
-      margin-top: 20px;
-    }
-
-    #list{
-      width: 300px;
-      margin-right: 50px;
-      min-width: 300px;
-    }
-
-    #list p {
-      font-size: 15px;
-      margin: 0;
-      max-width: 100%;
-      color: rgba(0,0,0,0.6);
-      white-space: nowrap;
-      overflow-x: hidden;
-      text-overflow: ellipsis;
-    }
-
-    #list a.name:hover {
-      color: #cb3837;
-    }
-    #list span.version {
-      color: rgba(0,0,0,0.8);
-      font-weight: 400;
-      font-size: 12px;
-    }
-    #list .list-group-item:hover span.version {
-      color: #cb3837 !important;
-    }
-
-    #list .list-group-item:hover .package {
-      color: #cb3837 !important;
-    }
-
-    #list .list-group-item.active span.version {
-      color: #cb3837 !important;
-    }
-
-    #list .list-group-item.active .package {
-      color: #cb3837 !important;
-    }
-
-
-
-    #list .list-group-item:hover{
-      background-color: #eeeeee;
-    }
-
-    #list .list-group-item.active{
-      background-color: #eeeeee;
-      border-color: #eeeeee;
-    }
-
-
-
-    #detail{
-      flex: 1;
-      width: 800px;
-    }
-
-
-  </style>
 </head>
 <body>
   <div id="header">
@@ -172,115 +50,15 @@
   <div id="footer"></div>
 
 
-  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/vue@2.1.6/dist/vue.js"></script>
-  <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="http://weex-market.taobao.net/ext/js/showdown.min.js"></script>
-  <script src="http://weex-market.taobao.net/ext/js/base64.min-2.1.9.js"></script>
+  <script src="./asstes/jquery.min.js"></script>
+  <script src="./asstes/vue.js"></script>
+  <script src="./asstes/bootstrap.min.js"></script>
+  <script src="./asstes/showdown.min.js"></script>
+  <script src="./asstes/base64.min-2.1.9.js"></script>
 
 
-<script>
-  (function(){
-    var getList = function(callback){
-      var url = "http://weex-market.taobao.net/json/weexExt/list.jsonp?callback=?"
-      $.getJSON(url, function(result){
-        var data = result.data;
-        var html = ""
-        for(var i=0;i<data.length;i++){
-          html+= '<div class="list-group-item packages" data-id="'+data[i].id+'">' +
-              '<a class="package" >'+data[i].name+'</a>' +
-              '<p class="desc">'+(data[i].description||" ")+'</p>'+
-              '<span class="version">'+(data[i].lastestVersion.version||" ")+'</span>'+
-              '</div>'
-        }
-        $("#list").html(html);
-        callback&&callback()
-      })
-    }
+<script src="./asstes/js.js"></script>
 
-
-    var showLoading = function(){
-      $("#detail").html('<div class="loading">loading...</div>')
-    }
-
-
-    var isLoading = false
-    var getDetail = function(id,callback){
-
-      var url = "http://weex-market.taobao.net/json/weexExt/readme.jsonp?callback=?&id="+id
-      isLoading = true;
-
-      showLoading();
-      $.getJSON(url, function(result){
-        isLoading = false;
-        callback&&callback(result)
-      })
-    }
-
-    var toHTML = function(markdown){
-      var readme_markdown = Base64.decode(markdown);
-
-      var converter = new showdown.Converter()
-      return converter.makeHtml(readme_markdown);
-    }
-
-
-    var renderDetail = function(result){
-      $("#detail").html(toHTML(result.data))
-    }
-
-
-
-    var addEvent = function(){
-      $("#list").on("click",".list-group-item", function(ev){
-        if(isLoading){
-          return;
-        }
-        var target = $(ev.currentTarget);
-        var id = target.attr("data-id")
-        actived(target)
-
-        if(id){
-            getDetail(id, function(result){
-              renderDetail(result)
-            })
-        }
-      })
-    }
-
-    var actived = function(el){
-      var target = $("#list .list-group-item");
-      target.removeClass("active")
-      el.addClass("active")
-    }
-
-    var initFirst = function(){
-      var target = $("#list .list-group-item").eq(0);
-      actived(target)
-      var id = target.attr("data-id")
-      if(id){
-        getDetail(id, function(result){
-          renderDetail(result)
-        })
-      }
-    }
-
-
-
-    getList(function(){
-      setTimeout(function(){
-        initFirst();
-      },0)
-    })
-
-    addEvent()
-
-
-
-  }())
-
-
-</script>
 
 </body>
 
