@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="83914d30-8f34-4ef1-926c-c1e3ad75ae95" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/asstes/js.js" afterPath="$PROJECT_DIR$/asstes/js.js" />
-    </list>
+    <list default="true" id="83914d30-8f34-4ef1-926c-c1e3ad75ae95" name="Default" comment="" />
     <ignored path="wpm.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -297,12 +295,12 @@
       <workItem from="1483423819520" duration="103000" />
       <workItem from="1483939658246" duration="2456000" />
       <workItem from="1484028782881" duration="3927000" />
-      <workItem from="1484037325222" duration="1967000" />
+      <workItem from="1484037325222" duration="1978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26737000" />
+    <option name="totallyTimeSpent" value="26748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
