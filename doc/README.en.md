@@ -1,7 +1,5 @@
 # Weex Engineering Development Kit
 
-[中文版文档](./README.md)
-
 ## Weexpack introduction
 Weexpack is our next generation of engineering development kits, it helps to setup weex application from scratch quickly. With simple commands, developers could create a weex project, add different platform template, could install plugins from local, GitHub or weex market, could pack up his application project and run on mobile. For those who would like to share his own plugins, he could publish them to the weex market.
 

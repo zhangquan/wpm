@@ -27,7 +27,7 @@
     $.get(url, function (result) {
       var data = result;
 
-      $("#doc-detail").html(toHTML(data));
+      $("#doc-detail").html(toHTMLFromText(data));
       callback && callback()
     })
   }
@@ -56,6 +56,12 @@
 
     var converter = new showdown.Converter()
     return converter.makeHtml(readme_markdown);
+  }
+
+  var toHTMLFromText = function (markdown) {
+
+    var converter = new showdown.Converter()
+    return converter.makeHtml(markdown);
   }
 
 
