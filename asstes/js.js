@@ -22,6 +22,16 @@
     })
   }
 
+  var getDoc = function (callback) {
+    var url = './doc/README.en.md'
+    $.get(url, function (result) {
+      var data = result.data;
+
+      $("#doc-detail").html(toHTML(data));
+      callback && callback()
+    })
+  }
+
 
   var showLoading = function () {
     $("#detail").html('<div class="loading">loading...</div>')
@@ -89,13 +99,22 @@
   }
 
 
-  getList(function () {
-    setTimeout(function () {
-      initFirst();
-    }, 0)
-  })
 
-  addEvent()
+  window.listInit = function(){
+    getList(function () {
+      setTimeout(function () {
+        initFirst();
+      }, 0)
+    })
+    addEvent()
+  }
+
+  window.docInit = function(){
+    getDoc()
+  }
+
+
+
 
 
 })();
