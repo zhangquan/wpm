@@ -40,6 +40,7 @@
 
   var isLoading = false
   var getDetail = function (id, callback) {
+    location.hash = "#"+id;
 
     var url = protocol+"//weex-market.taobao.net/json/weexExt/readme.jsonp?callback=?&id=" + id
     isLoading = true;
@@ -77,6 +78,7 @@
       }
       var target = $(ev.currentTarget);
       var id = target.attr("data-id")
+
       actived(target)
 
       if (id) {
@@ -93,10 +95,29 @@
     el.addClass("active")
   }
 
+  var activedById = function (id) {
+    var target = $("#list .list-group-item");
+    target.removeClass("active")
+    debugger
+    target.each(function(index,el){
+      if($(el).attr("data-id") == id){
+        $(el).addClass("active")
+      }
+    })
+
+  }
+
   var initFirst = function () {
-    var target = $("#list .list-group-item").eq(0);
-    actived(target)
-    var id = target.attr("data-id")
+    if(location.hash&&/^#\d+$/){
+      var id = location.hash.substring(1);
+      activedById(id)
+    }
+    else {
+      var target = $("#list .list-group-item").eq(0);
+      actived(target)
+      var id = target.attr("data-id")
+    }
+
     if (id) {
       getDetail(id, function (result) {
         renderDetail(result)
