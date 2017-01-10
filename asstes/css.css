@@ -17,6 +17,29 @@
     z-index: 1100;
     display: none;
 }
+.logo-header{
+    display: flex;
+    flex-direction: row;
+    justify-content:  center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.logo-header .logo{
+
+}
+.logo-header .title{
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 0;
+}
+
+.logo-header .title h1{
+    margin-top: 0px;
+}
+.logo-header .title h3{
+    margin-top: 0px;
+}
 
 .logo{
 
@@ -24,10 +47,12 @@
 .logo img{
     width: 120px;
 }
-
-.site-header .title {
-    margin-top: 20px;
+.site-header{
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
+
+
 .site-header .search {
     border: 2px solid #27AE60;
     -webkit-box-shadow: none;
@@ -62,7 +87,7 @@
 }
 
 #list{
-    width: 300px;
+    width: 400px;
     margin-right: 50px;
     min-width: 300px;
 }
@@ -119,3 +144,63 @@
     width: 800px;
 }
 
+@media (min-width: 1390px) {
+    .container {
+        width: 1360px;
+    }
+}
+
+
+
+
+
+.list-inline li{
+    margin-right: 30px;
+}
+.list-inline a{
+   height: 30px;
+    line-height: 30px;
+
+}
+
+.list-inline svg, .list-inline img{
+float: left;
+    margin-right: 5px;
+}
+
+.list-inline img{
+    float: left;
+    margin-right: 5px;
+    width: 28px;
+    height: 28px;
+}
+.list-inline span{
+    float: left;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    color: #000;
+}
+
+.footer-nav {
+    background: #3d4751;
+    height: 100px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-nav .copy-right {
+    color: grey;
+    padding-top: 24px;
+    font-size: 14px;
+}
+
+.footer-nav .copy-right p {
+    margin-bottom: 0;
+}
+.footer-nav .copy-right a {
+    color: white;
+    text-decoration: none;
+}
