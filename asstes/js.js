@@ -25,7 +25,7 @@
   var getDoc = function (callback) {
     var url = './doc/README.en.md'
     $.get(url, function (result) {
-      var data = result.data;
+      var data = result;
 
       $("#doc-detail").html(toHTML(data));
       callback && callback()
