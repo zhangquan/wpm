@@ -12,7 +12,7 @@
       var html = ""
       for (var i = 0; i < data.length; i++) {
         html += '<div class="list-group-item packages" data-id="' + data[i].id + '">' +
-            '<a class="package" >' + data[i].name + '</a>' +
+            '<a href="#'+ data[i].id +'" class="package" >' + data[i].name + '</a>' +
             '<p class="desc">' + (data[i].description || " ") + '</p>' +
             '<span class="version">' + (data[i].lastestVersion.version || " ") + '</span>' +
             '</div>'
