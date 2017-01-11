@@ -55,13 +55,13 @@
   var toHTML = function (markdown) {
     var readme_markdown = Base64.decode(markdown);
 
-    var converter = new showdown.Converter()
+    var converter = new showdown.Converter({tables:true})
     return converter.makeHtml(readme_markdown);
   }
 
   var toHTMLFromText = function (markdown) {
 
-    var converter = new showdown.Converter()
+    var converter = new showdown.Converter({tables:true})
     return converter.makeHtml(markdown);
   }
 
