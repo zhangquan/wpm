@@ -6,7 +6,7 @@
 
 
   var getList = function (callback) {
-    var url = protocol+"//weex-market.taobao.net/json/weexExt/list.jsonp?callback=?"
+    var url = protocol+"//market.dotwe.org/json/weexExt/list.jsonp?callback=?"
     $.getJSON(url, function (result) {
       var data = result.data;
       var html = ""
@@ -42,7 +42,7 @@
   var getDetail = function (id, callback) {
     location.hash = "#"+id;
 
-    var url = protocol+"//weex-market.taobao.net/json/weexExt/readme.jsonp?callback=?&id=" + id
+    var url = protocol+"//market.dotwe.org/json/weexExt/readme.jsonp?callback=?&id=" + id
     isLoading = true;
 
     showLoading();
@@ -98,7 +98,6 @@
   var activedById = function (id) {
     var target = $("#list .list-group-item");
     target.removeClass("active")
-    debugger
     target.each(function(index,el){
       if($(el).attr("data-id") == id){
         $(el).addClass("active")
