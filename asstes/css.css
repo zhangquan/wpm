@@ -2,6 +2,7 @@
 
 }
 
+
 .site-header {
     position: relative;
     text-align: center;
@@ -102,6 +103,16 @@
     margin-right: 50px;
     min-width: 300px;
 }
+
+#list .list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 
 #list p {
     font-size: 15px;
