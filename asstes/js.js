@@ -6,7 +6,7 @@
 
 
   var getList = function (callback) {
-    var url = protocol+"//market.dotwe.org/json/weexExt/list.jsonp?callback=?"
+    var url = protocol+"//market.dotwe.org/json/weexExt/list.json?callback=?"
     $.getJSON(url, function (result) {
       var data = result.data;
       var html = ""
@@ -42,7 +42,7 @@
   var getDetail = function (id, callback) {
     location.hash = "#"+id;
 
-    var url = protocol+"//market.dotwe.org/json/weexExt/readme.jsonp?callback=?&id=" + id
+    var url = protocol+"//market.dotwe.org/json/weexExt/readme.json?callback=?&id=" + id
     isLoading = true;
 
     showLoading();
